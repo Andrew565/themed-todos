@@ -1,0 +1,1 @@
+As long as I've wanted to be an app developer, I've wanted to create a "themed" todo list. This will finally be the realization of that dream! Similar to Carrot, the aim is to make a todo list that's not only effective, but fun to use.
