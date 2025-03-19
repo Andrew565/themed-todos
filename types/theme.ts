@@ -50,7 +50,7 @@ export const FantasyTheme: Theme = {
   inputText: "#2c3e50",
   checkboxBorder: "#8e44ad",
   checkboxFill: "#8e44ad",
-  font: "System",
+  font: "Faerie Moot Simple",
 };
 
 export const CyberpunkTheme: Theme = {

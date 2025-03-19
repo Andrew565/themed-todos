@@ -5,7 +5,7 @@ import { ThemeProps, TodoItem } from "../components/TodoItem";
 import Foundation from "@expo/vector-icons/Foundation";
 import { Theme, themes } from "../types/theme";
 import { ThemeChangerContext, ThemeContext } from "../context/ThemeContext";
-import { useFonts } from "expo-font";
+import { getLoadedFonts, useFonts } from "expo-font";
 
 const Container = styled.View`
   flex: 1;
@@ -88,7 +88,10 @@ export default function HomeScreen() {
   const [newTodo, setNewTodo] = useState("");
   const [loaded, error] = useFonts({
     Nashville: require("../assets/fonts/Nashville.ttf"),
+    "Faerie Moot Simple": require("../assets/fonts/Faerie Moot Simple.ttf"),
   });
+
+  console.log("Fonts:", getLoadedFonts());
 
   const addTodo = () => {
     if (newTodo.trim()) {
