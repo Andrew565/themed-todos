@@ -29,7 +29,11 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/Nashville.ttf", "./assets/fonts/Faerie Moot Simple.ttf"]
+          "fonts": [
+            "./assets/fonts/Nashville.ttf",
+            "./assets/fonts/Faerie Moot Simple.ttf",
+            "./assets/fonts/Code Squared.ttf"
+          ]
         }
       ]
     ]

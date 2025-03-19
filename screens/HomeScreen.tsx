@@ -89,6 +89,7 @@ export default function HomeScreen() {
   const [loaded, error] = useFonts({
     Nashville: require("../assets/fonts/Nashville.ttf"),
     "Faerie Moot Simple": require("../assets/fonts/Faerie Moot Simple.ttf"),
+    "Code Squared": require("../assets/fonts/Code Squared.ttf"),
   });
 
   console.log("Fonts:", getLoadedFonts());

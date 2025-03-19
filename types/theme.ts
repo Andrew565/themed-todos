@@ -66,7 +66,7 @@ export const CyberpunkTheme: Theme = {
   inputText: "#00ff00",
   checkboxBorder: "#ff00ff",
   checkboxFill: "#ff00ff",
-  font: "System",
+  font: "Code Squared",
 };
 
 export const themes = [WildWestTheme, FantasyTheme, CyberpunkTheme];
