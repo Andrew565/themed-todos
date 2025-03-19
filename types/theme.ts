@@ -34,7 +34,7 @@ export const WildWestTheme: Theme = {
   inputText: "#2c1810",
   checkboxBorder: "#f8f1e3",
   checkboxFill: "#d35400",
-  font: "System",
+  font: "Nashville",
 };
 
 export const FantasyTheme: Theme = {

@@ -5,11 +5,13 @@ import { ThemeProps, TodoItem } from "../components/TodoItem";
 import Foundation from "@expo/vector-icons/Foundation";
 import { Theme, themes } from "../types/theme";
 import { ThemeChangerContext, ThemeContext } from "../context/ThemeContext";
+import { useFonts } from "expo-font";
 
 const Container = styled.View`
   flex: 1;
   padding: 20px;
   background-color: ${(props: ThemeProps) => props.theme.background};
+  font-family: ${(props: ThemeProps) => props.theme.font};
 `;
 
 const Header = styled.View`
@@ -84,6 +86,9 @@ export default function HomeScreen() {
   const themeChanger = useContext(ThemeChangerContext) as React.Dispatch<React.SetStateAction<Theme>>;
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState("");
+  const [loaded, error] = useFonts({
+    Nashville: require("../assets/fonts/Nashville.ttf"),
+  });
 
   const addTodo = () => {
     if (newTodo.trim()) {
@@ -106,6 +111,10 @@ export default function HomeScreen() {
   const deleteTodo = (id: string) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
+
+  if (!loaded || error) {
+    return null; // or a loading indicator
+  }
 
   return (
     <ThemeProvider theme={theme}>
