@@ -9,9 +9,9 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [loaded, error] = useFonts({
-    Nashville: require("../assets/fonts/Nashville.ttf"),
-    "Faerie Moot Simple": require("../assets/fonts/Faerie Moot Simple.ttf"),
-    "Code Squared": require("../assets/fonts/Code Squared.ttf"),
+    Nashville: require("./assets/fonts/Nashville.ttf"),
+    "Faerie Moot Simple": require("./assets/fonts/Faerie Moot Simple.ttf"),
+    "Code Squared": require("./assets/fonts/Code Squared.ttf"),
   });
 
   if (!loaded || error) {
@@ -19,18 +19,18 @@ export default function App() {
   }
 
   return (
-      <ThemeSelectorProvider>
-        <SafeAreaProvider>
-          <NavigationContainer>
-            <Stack.Navigator
-              screenOptions={{
-                headerShown: false,
-              }}
-            >
-              <Stack.Screen name="Home" component={HomeScreen} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </SafeAreaProvider>
-      </ThemeSelectorProvider>
+    <ThemeSelectorProvider>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="Home" component={HomeScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </ThemeSelectorProvider>
   );
 }
