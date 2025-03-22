@@ -8,13 +8,13 @@ import { useFonts } from "expo-font";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [loaded, error] = useFonts({
+  const [fontsLoaded, fontsError] = useFonts({
     Nashville: require("./assets/fonts/Nashville.ttf"),
     "Faerie Moot Simple": require("./assets/fonts/Faerie Moot Simple.ttf"),
     "Code Squared": require("./assets/fonts/Code Squared.ttf"),
   });
 
-  if (!loaded || error) {
+  if (!fontsLoaded || fontsError) {
     return null; // or a loading indicator
   }
 
