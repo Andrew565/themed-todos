@@ -5,12 +5,12 @@ import { ThemeProps, TodoItem } from "../components/TodoItem";
 import Foundation from "@expo/vector-icons/Foundation";
 import { Theme, themes } from "../types/theme";
 import { ThemeChangerContext, ThemeContext } from "../context/ThemeContext";
-import { getLoadedFonts, useFonts } from "expo-font";
+import { ImgBkg } from "../components/ImgBkg";
 
 const Container = styled.View`
   flex: 1;
   padding: 20px;
-  background-color: ${(props: ThemeProps) => props.theme.background};
+  background-color: transparent;
   font-family: ${(props: ThemeProps) => props.theme.font};
 `;
 
@@ -86,13 +86,6 @@ export default function HomeScreen() {
   const themeChanger = useContext(ThemeChangerContext) as React.Dispatch<React.SetStateAction<Theme>>;
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState("");
-  const [loaded, error] = useFonts({
-    Nashville: require("../assets/fonts/Nashville.ttf"),
-    "Faerie Moot Simple": require("../assets/fonts/Faerie Moot Simple.ttf"),
-    "Code Squared": require("../assets/fonts/Code Squared.ttf"),
-  });
-
-  console.log("Fonts:", getLoadedFonts());
 
   const addTodo = () => {
     if (newTodo.trim()) {
@@ -116,48 +109,46 @@ export default function HomeScreen() {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  if (!loaded || error) {
-    return null; // or a loading indicator
-  }
-
   return (
     <ThemeProvider theme={theme}>
-      <Container>
-        <Header>
-          <Title>Todo List</Title>
-        </Header>
+      <ImgBkg>
+        <Container>
+          <Header>
+            <Title>Todo List</Title>
+          </Header>
 
-        <ThemeScroller horizontal showsHorizontalScrollIndicator={false}>
-          {themes.map((t) => (
-            <ThemeButton
-              key={t.name}
-              isSelected={theme.name === t.name}
-              themeColor={t.cardBackground}
-              onPress={() => themeChanger(t)}
-            >
-              <ThemeText color={t.textPrimary}>{t.name}</ThemeText>
-            </ThemeButton>
-          ))}
-        </ThemeScroller>
+          <ThemeScroller horizontal showsHorizontalScrollIndicator={false}>
+            {themes.map((t) => (
+              <ThemeButton
+                key={t.name}
+                isSelected={theme.name === t.name}
+                themeColor={t.cardBackground}
+                onPress={() => themeChanger(t)}
+              >
+                <ThemeText color={t.textPrimary}>{t.name}</ThemeText>
+              </ThemeButton>
+            ))}
+          </ThemeScroller>
 
-        <InputContainer>
-          <Input
-            placeholder="Add a new todo..."
-            placeholderTextColor={theme.textSecondary}
-            value={newTodo}
-            onChangeText={setNewTodo}
+          <InputContainer>
+            <Input
+              placeholder="Add a new todo..."
+              placeholderTextColor={theme.textSecondary}
+              value={newTodo}
+              onChangeText={setNewTodo}
+            />
+            <AddButton onPress={addTodo}>
+              <Foundation name="sheriff-badge" size={24} color={theme.buttonText} />
+            </AddButton>
+          </InputContainer>
+
+          <FlatList
+            data={todos}
+            renderItem={({ item }) => <TodoItem todo={item} onToggle={toggleTodo} onDelete={deleteTodo} />}
+            keyExtractor={(item) => item.id}
           />
-          <AddButton onPress={addTodo}>
-            <Foundation name="sheriff-badge" size={24} color={theme.buttonText} />
-          </AddButton>
-        </InputContainer>
-
-        <FlatList
-          data={todos}
-          renderItem={({ item }) => <TodoItem todo={item} onToggle={toggleTodo} onDelete={deleteTodo} />}
-          keyExtractor={(item) => item.id}
-        />
-      </Container>
+        </Container>
+      </ImgBkg>
     </ThemeProvider>
   );
 }

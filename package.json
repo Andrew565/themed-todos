@@ -26,7 +26,8 @@
     "react-native-reanimated": "^3.10.1",
     "react-native-safe-area-context": "latest",
     "react-native-screens": "latest",
-    "styled-components": "^6.1.15"
+    "styled-components": "^6.1.15",
+    "expo-image": "~2.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
