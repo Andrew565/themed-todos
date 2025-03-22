@@ -1,0 +1,17 @@
+# Known Todos and Planned Features
+
+(Roughly in order of priority)
+
+- [x] Add background images for Fantasy and Cyberpunk themes
+- [ ] Persist todos across app loads (react-native-mmkv?)
+- [ ] Make theme names more semantic and make use of variables for color names
+- [ ] Tweak and improve colors of things (especially Fantasy theme)
+- [ ] Make "add" button themeable (not just a sheriff's badge for all three themes)
+- [ ] Make "trash can" button themeable
+- [ ] Add "onKeyPress" handler to todos input to trigger saving the todo on "return" key press
+- [ ] Add wanted poster images (at least three per theme)
+- [ ] Add "task done" indicators (bullet holes, arrows in the poster, laser burns)
+- [ ] Add ability to repeat tasks (include repeat icon of some kind)
+- [ ] Add ability to set reminders and incorporate notifications
+- [ ] Move theme switching to a side menu
+- [ ] Add ability to load user-defined themes
