@@ -3,7 +3,6 @@ import "styled-components";
 export interface Theme {
   name: string;
   background: string;
-  backgroundImage: string;
   cardBackground: string;
   textPrimary: string;
   textSecondary: string;
@@ -25,7 +24,6 @@ declare module "styled-components" {
 export const WildWestTheme: Theme = {
   name: "Wild West",
   background: "#f4d03f",
-  backgroundImage: "../assets/images/ghost-town.jpg",
   cardBackground: "#8b4513",
   textPrimary: "#f8f1e3",
   textSecondary: "#5d4037",
@@ -42,7 +40,6 @@ export const WildWestTheme: Theme = {
 export const FantasyTheme: Theme = {
   name: "Fantasy",
   background: "#2c3e50",
-  backgroundImage: "../assets/images/fantasy-forest.jpg",
   cardBackground: "#34495e",
   textPrimary: "#ecf0f1",
   textSecondary: "#bdc3c7",
@@ -59,7 +56,6 @@ export const FantasyTheme: Theme = {
 export const CyberpunkTheme: Theme = {
   name: "Cyberpunk",
   background: "#000000",
-  backgroundImage: "../assets/images/cyberpunk-city.jpg",
   cardBackground: "#1a1a1a",
   textPrimary: "#00ff00",
   textSecondary: "#00cc00",
