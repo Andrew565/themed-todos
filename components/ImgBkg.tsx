@@ -1,6 +1,6 @@
 import { ImageBackground } from "expo-image";
 import { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../data/ThemeContext";
 import { Theme } from "../types/theme";
 
 export const ImgBkg: React.FC<{ children: React.ReactElement }> = ({ children }) => {

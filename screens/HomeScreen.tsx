@@ -4,7 +4,7 @@ import { FlatList } from "react-native";
 import { ThemeProps, TodoItem } from "../components/TodoItem";
 import Foundation from "@expo/vector-icons/Foundation";
 import { Theme, themes } from "../types/theme";
-import { ThemeChangerContext, ThemeContext } from "../context/ThemeContext";
+import { ThemeChangerContext, ThemeContext } from "../data/ThemeContext";
 import { ImgBkg } from "../components/ImgBkg";
 
 const Container = styled.View`
