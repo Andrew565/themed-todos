@@ -1,11 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled, { ThemeProvider } from "styled-components/native";
 import { FlatList } from "react-native";
 import { ThemeProps, TodoItem } from "../components/TodoItem";
 import Foundation from "@expo/vector-icons/Foundation";
 import { Theme, themes } from "../types/theme";
-import { ThemeChangerContext, ThemeContext } from "../data/ThemeContext";
 import { ImgBkg } from "../components/ImgBkg";
+import { store } from "../data/store";
+import { ThemeChangerContext, ThemeContext } from "../data/ThemeContext";
 
 const Container = styled.View`
   flex: 1;
@@ -87,26 +88,42 @@ export default function HomeScreen() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState("");
 
+  useEffect(() => {
+    try {
+      store.readItem("todos").then((oldTodos) => oldTodos && setTodos(oldTodos));
+    } catch (e) {
+      console.log("Error while restoring todos:", e);
+    }
+  }, []);
+
+  const storeTodos = (newTodos: Todo[]) => {
+    setTodos(newTodos);
+    store.storeItem("todos", newTodos);
+  };
+
   const addTodo = () => {
     if (newTodo.trim()) {
-      setTodos([
+      const newTodos = [
         ...todos,
         {
           id: Date.now().toString(),
           text: newTodo.trim(),
           completed: false,
         },
-      ]);
+      ];
+      storeTodos(newTodos);
       setNewTodo("");
     }
   };
 
   const toggleTodo = (id: string) => {
-    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
+    const newTodos = todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo));
+    storeTodos(newTodos);
   };
 
   const deleteTodo = (id: string) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    storeTodos(newTodos);
   };
 
   return (

@@ -3,7 +3,8 @@
 (Roughly in order of priority)
 
 - [x] Add background images for Fantasy and Cyberpunk themes
-- [ ] Persist todos across app loads (react-native-mmkv?)
+- [X] Persist todos across app loads
+- [ ] Change out Wild West theme's font for one that supports numbers
 - [ ] Make theme names more semantic and make use of variables for color names
 - [ ] Tweak and improve colors of things (especially Fantasy theme)
 - [ ] Make "add" button themeable (not just a sheriff's badge for all three themes)
